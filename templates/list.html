@@ -1,0 +1,109 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Code Handbook</title>
+
+    <link href="static/css/bootstrap_flatly.min.css" rel="stylesheet">
+    <link href="static/css/dropzone.css" rel="stylesheet">    
+
+    <!--<link href="static/css/jumbotron-narrow.css" rel="stylesheet">-->
+
+    <script src="static/js/packages/angular.min.js"></script>
+    <script src="static/js/packages/dropzone.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+    <script src="static/js/models/TextDocument.js"></script>
+    <script src="static/js/packages/angular-animate.min.js"></script>
+    <script src="static/js/app.js"></script>
+
+
+</head>
+
+<body ng-controller="HomeCtrl">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">ProtoCool</a>
+            </div>
+        </div>
+    </nav>   
+ <div class="container" ng-hide="summarization==null">  
+    <div class="header clearfix">
+        <h3 class="text-muted">Summarization</h3>
+    </div> 
+<div class="row" >
+    <div class="well well-lg" >{{ '{{summarization}}' }}</div>
+</div>
+ </div>
+
+    <div class="container">
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <button type="button" class="btn btn-primary" ng-click='loadSummarizations()'>Summarize</button>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Documents</h3>
+        </div>
+
+        <div class="bs-example" data-example-id="panel-without-body-with-table">
+            <div class="panel panel-default">
+                <div class="panel-heading">Protocol list</div>
+                <table class="table">
+                    <thead>
+                        <tr ng-repeat="document in documents">
+                            <th>{{ '{{ document.Name }}' }}</th>
+                            <th>{{ '{{ document.getShortText() }}' }}</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th></th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><span style="cursor:pointer;" class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
+                            <td><span style="cursor:pointer;" class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                            <td><span style="cursor:pointer;" class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+
+     <div class="container" id="dropzone">
+            <div class="header clearfix">
+            <h3 class="text-muted">Load Up Files</h3>
+        </div>
+            <form action="/file" class="dropzone" id="document-dropzone"></form>
+        </div>
+
+
+
+    <script src="static/js/packages/jquery.min.js"></script>
+    <script src="static/js/packages/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+</html>
