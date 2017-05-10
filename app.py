@@ -12,7 +12,7 @@ UPLOADED_FILES_DEST = 'temp/'
 ALLOWED_EXTENSIONS = set(['txt', 'doc', 'docx'])
 
 app.config['MONGO_DBNAME'] = 'textdocuments'
-app.config['MONGO_URI']= 'mongodb://192.168.99.100:32769/textDocumentdb'
+app.config['MONGO_URI']= 'mongodb://192.168.99.100:32768/textDocumentdb'
 app.config['UPLOADED_FILES_DEST'] = UPLOADED_FILES_DEST
 
 
@@ -75,6 +75,11 @@ def add_file():
        return 'file uploaded successfully'
    else:
        return 'File type not supported (yet)', 500
+   
+@app.route('/documents/<string:name>', methods=['DELETE'])
+def delete_document(name):
+    mongo.db.documents.delete_many({"name": name});
+    return "Document deleted succesfully"
 
 @app.route('/summarize', methods=['GET'])
 def summarize_documents():
