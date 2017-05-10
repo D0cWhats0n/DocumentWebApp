@@ -76,6 +76,7 @@ def add_file():
    else:
        return 'File type not supported (yet)', 500
    
+   
 @app.route('/documents/<string:name>', methods=['DELETE'])
 def delete_document(name):
     mongo.db.documents.delete_many({"name": name});

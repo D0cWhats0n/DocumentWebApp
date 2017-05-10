@@ -30,6 +30,14 @@ angular.module('myApp', ['ngAnimate'])
 				}
 			)
 
-		 }; 		
+		};
+
+		 $scope.deleteDocument = function (name) {
+			 $http.delete('/documents/' + name).then(function successCallback(response) {
+			 }, function errorCallback(response) {
+				 $scope.summarization = null;
+				 $log.error("Could not delete document")
+			 });
+		 }
 
 	})
